@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Eres Cabro?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        #btnNo {
+            position: relative;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        #btnSi {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        #image {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Eres Cabro?</h1>
+
+    <div class="button-container">
+        <button id="btnSi">Sí</button>
+        <button id="btnNo">No</button>
+    </div>
+
+    <img id="image" src="lo suponia.jpg" alt="Imagen" width="300">
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+        const btnSi = document.getElementById('btnSi');
+        const img = document.getElementById('image');
+
+        // Función para mover el botón "No" de manera aleatoria
+        function moverBotonNo() {
+            const x = Math.random() * 300 - 150; // Movimiento horizontal
+            const y = Math.random() * 300 - 150; // Movimiento vertical
+            btnNo.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Agrandar el botón "Sí" más rápidamente
+            let currentSize = parseFloat(window.getComputedStyle(btnSi).fontSize);
+            btnSi.style.fontSize = `${currentSize + 10}px`;  // Aumenta el tamaño en 10 píxeles cada vez
+        }
+
+        // Detectar cuando el botón "No" es hovereado
+        btnNo.addEventListener('mouseenter', moverBotonNo);
+
+        // Mostrar imagen cuando se presiona el botón "Sí"
+        btnSi.addEventListener('click', function() {
+            img.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
